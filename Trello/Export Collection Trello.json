@@ -1,0 +1,496 @@
+{
+	"info": {
+		"_postman_id": "5b09f875-7dcc-4bc8-85ca-bfeb4cf6f57a",
+		"name": "Create & Delete Boards",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22657833"
+	},
+	"item": [
+		{
+			"name": "Request 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Test Case 1 \r",
+							"pm.test(\"Confirm the idOrganizations = 62ab8bd6035f29851c9457c7 \", function () {\r",
+							"    pm.expect(pm.response.text(\"idOrganization\")).to.include(\"62ab8bd6035f29851c9457c7\");\r",
+							"});\r",
+							"\r",
+							"//Test Case 2\r",
+							"pm.test(\"Confirm the permissionLevel = private\", function () {\r",
+							"    pm.expect(pm.response.text(\"permissionLevel\")).to.include(\"private\");\r",
+							"});\r",
+							"\r",
+							"//Test Case 3\r",
+							"pm.test(\"Confirm the closed = false\", function () {\r",
+							"    pm.expect(pm.response.text(\"closed\")).to.contain(\"false\");\r",
+							"});\r",
+							"\r",
+							"// Test Case 4\r",
+							"pm.test(\"Validate the hideVotes = false \", function () {\r",
+							"pm.expect(pm.response.text(\"hideVotes\")).to.include(\"false\");});\r",
+							"\r",
+							"// Delay Time 1000ms\r",
+							"setTimeout(function(){},[1000]);\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function(){},[2000]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"new board\",\r\n    \"desc\" : \"Creating Board\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.trello.com/1/boards/?name={new board}&description={Creating Board}&key=b9fccebf15d77f77d4440c192bc001b0&token=f9e1d2d5bdbc00af2d0512f336e03181c5ddb0af55052ceed6d7f8e41962702b",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{new board}"
+						},
+						{
+							"key": "description",
+							"value": "{Creating Board}"
+						},
+						{
+							"key": "key",
+							"value": "b9fccebf15d77f77d4440c192bc001b0"
+						},
+						{
+							"key": "token",
+							"value": "f9e1d2d5bdbc00af2d0512f336e03181c5ddb0af55052ceed6d7f8e41962702b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Test Case 1\r",
+							"\r",
+							"pm.test(\"Check the number of boards\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.boards.length).is.greaterThan(1)\r",
+							"});\r",
+							"\r",
+							"//Console Log\r",
+							"\r",
+							"console.log(pm.response.json().boards[0].id)\r",
+							"console.log(pm.response.json().boards.length)\r",
+							"console.log(pm.response.json().boards[1].id)\r",
+							"\r",
+							"// Delay Time 1000ms\r",
+							"setTimeout(function(){},[1000]);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function(){},[2000]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.trello.com/1/members/me?boards=open&key=b9fccebf15d77f77d4440c192bc001b0&token=f9e1d2d5bdbc00af2d0512f336e03181c5ddb0af55052ceed6d7f8e41962702b",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"members",
+						"me"
+					],
+					"query": [
+						{
+							"key": "boards",
+							"value": "open"
+						},
+						{
+							"key": "key",
+							"value": "b9fccebf15d77f77d4440c192bc001b0"
+						},
+						{
+							"key": "token",
+							"value": "f9e1d2d5bdbc00af2d0512f336e03181c5ddb0af55052ceed6d7f8e41962702b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Test Case 1\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Note : The ID number always changes. That's why sometimes you will find the test case failing.\r",
+							"\r",
+							"// Delay Time 1000ms\r",
+							"setTimeout(function(){},[1000]);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function(){},[2000]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.trello.com/1/boards/630e94bf70f7d401cc7ba0e2?key=b9fccebf15d77f77d4440c192bc001b0&token=f9e1d2d5bdbc00af2d0512f336e03181c5ddb0af55052ceed6d7f8e41962702b",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"boards",
+						"630e94bf70f7d401cc7ba0e2"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "b9fccebf15d77f77d4440c192bc001b0"
+						},
+						{
+							"key": "token",
+							"value": "f9e1d2d5bdbc00af2d0512f336e03181c5ddb0af55052ceed6d7f8e41962702b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"//Test Case 1 \r",
+							"\r",
+							"pm.test(\"Confirm the keys (id and name and idBoard) exist\", function () {\r",
+							"pm.collectionVariables.get(\"id\",\"name\",\"idBoard\");\r",
+							"});\r",
+							"\r",
+							"//Test Case 2\r",
+							"\r",
+							"pm.test(\"Verify the idBoards = 62ab8c967386d36cfd62bb4f \", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.idBoard).to.eql(\"62ab8c967386d36cfd62bb4f\");\r",
+							"});\r",
+							"\r",
+							"//Test Case 3\r",
+							"\r",
+							"pm.test(\"Verify the closed = false\", function () {\r",
+							"    pm.expect(pm.response.text(\"closed\")).to.include(\"false\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// Delay Time 1000ms\r",
+							"setTimeout(function(){},[1000]);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function(){},[2000]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"list name\": \"Second new board\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.trello.com/1/lists?name={name}&idBoard=62ab8c967386d36cfd62bb4f&key=b9fccebf15d77f77d4440c192bc001b0&token=f9e1d2d5bdbc00af2d0512f336e03181c5ddb0af55052ceed6d7f8e41962702b",
+					"protocol": "https",
+					"host": [
+						"api",
+						"trello",
+						"com"
+					],
+					"path": [
+						"1",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{name}"
+						},
+						{
+							"key": "idBoard",
+							"value": "62ab8c967386d36cfd62bb4f"
+						},
+						{
+							"key": "key",
+							"value": "b9fccebf15d77f77d4440c192bc001b0"
+						},
+						{
+							"key": "token",
+							"value": "f9e1d2d5bdbc00af2d0512f336e03181c5ddb0af55052ceed6d7f8e41962702b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request 5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Test Case 1\r",
+							"\r",
+							"pm.test(\"Check if the number of the lists is greater than three\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    // Found two only not three\r",
+							"    pm.expect(jsonData.length).is.greaterThan(3)\r",
+							"});\r",
+							"//Console Log\r",
+							"\r",
+							"console.log(pm.response.json()[0].id)\r",
+							"console.log(pm.response.json().length)\r",
+							"\r",
+							"// Delay Time 1000ms\r",
+							"setTimeout(function(){},[1000]);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function(){},[2000]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "session level header",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}/boards/62ab8c967386d36cfd62bb4f/lists?key=b9fccebf15d77f77d4440c192bc001b0&token=f9e1d2d5bdbc00af2d0512f336e03181c5ddb0af55052ceed6d7f8e41962702b",
+					"host": [
+						"{{Url}}"
+					],
+					"path": [
+						"boards",
+						"62ab8c967386d36cfd62bb4f",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "b9fccebf15d77f77d4440c192bc001b0"
+						},
+						{
+							"key": "token",
+							"value": "f9e1d2d5bdbc00af2d0512f336e03181c5ddb0af55052ceed6d7f8e41962702b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request 6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Test Case 1\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Delay Time 1000ms\r",
+							"setTimeout(function(){},[1000]);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function(){},[2000]);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n         \"id\": \"62ab95801334fe1c30398c59\",\r\n        \"name\": \"Done\",\r\n        \"closed\": true,\r\n        \"idBoard\": \"62ab8c967386d36cfd62bb4f\",\r\n        \"pos\": 180224,\r\n        \"subscribed\": false,\r\n        \"softLimit\": null\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}/lists/62ab95801334fe1c30398c59/closed?value=true&key=b9fccebf15d77f77d4440c192bc001b0&token=f9e1d2d5bdbc00af2d0512f336e03181c5ddb0af55052ceed6d7f8e41962702b",
+					"host": [
+						"{{Url}}"
+					],
+					"path": [
+						"lists",
+						"62ab95801334fe1c30398c59",
+						"closed"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "true"
+						},
+						{
+							"key": "key",
+							"value": "b9fccebf15d77f77d4440c192bc001b0"
+						},
+						{
+							"key": "token",
+							"value": "f9e1d2d5bdbc00af2d0512f336e03181c5ddb0af55052ceed6d7f8e41962702b"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

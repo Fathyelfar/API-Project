@@ -1,0 +1,264 @@
+{
+	"id": "77d93ac3-51d8-40b8-9736-5e488bc9bcc1",
+	"name": "Part 1 Swagger",
+	"timestamp": "2022-08-31T15:27:17.552Z",
+	"collection_id": "22657833-04931cc7-ba82-42ba-8233-c028a4c1fed8",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 16,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "4952d20e-371e-4d7f-bc42-0575984e5ba0",
+			"name": "Test case 1",
+			"url": "http://fakerestapi.azurewebsites.net/api/v1/Authors",
+			"time": 228,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Confirm the keys (id and idBook and firstName and lastName) exist": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Confirm the keys (id and idBook and firstName and lastName) exist": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				228
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Confirm the keys (id and idBook and firstName and lastName) exist": true
+				}
+			]
+		},
+		{
+			"id": "8e94e5a5-699f-42a4-bbca-e66f8a75f514",
+			"name": "Test case 2",
+			"url": "http://fakerestapi.azurewebsites.net/api/v1/Authors",
+			"time": 84,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"The status code is 400 because the first name and last name are missing.": true,
+				"Validate the title = One or more validation errors occurred.": true,
+				"Validate the type = https://tools.ietf.org/html/rfc7231#section-6.5.1 ": true
+			},
+			"testPassFailCounts": {
+				"The status code is 400 because the first name and last name are missing.": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the title = One or more validation errors occurred.": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the type = https://tools.ietf.org/html/rfc7231#section-6.5.1 ": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				84
+			],
+			"allTests": [
+				{
+					"The status code is 400 because the first name and last name are missing.": true,
+					"Validate the title = One or more validation errors occurred.": true,
+					"Validate the type = https://tools.ietf.org/html/rfc7231#section-6.5.1 ": true
+				}
+			]
+		},
+		{
+			"id": "9a1e9635-ad64-4778-99dd-281f6d09227b",
+			"name": "Test case 3",
+			"url": "http://fakerestapi.azurewebsites.net/api/v1/Authors/authors/books/1",
+			"time": 83,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 200ms": true,
+				"Response size is between 50 ,180": true,
+				"Validate the idBook=1": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response size is between 50 ,180": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the idBook=1": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				83
+			],
+			"allTests": [
+				{
+					"Response time is less than 200ms": true,
+					"Response size is between 50 ,180": true,
+					"Validate the idBook=1": true
+				}
+			]
+		},
+		{
+			"id": "fa872ca6-fc28-47bc-828e-0405345ae1ed",
+			"name": "Test case 4",
+			"url": "http://fakerestapi.azurewebsites.net/api/v1/Authors/1",
+			"time": 80,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Validate the value of the first name for id1 = First Name 1": true,
+				"Validate the value of the id =1": true,
+				"Validate the value of the idBook = 1": true,
+				"Validate the value of the last name for id1 = last Name 1": true
+			},
+			"testPassFailCounts": {
+				"Validate the value of the first name for id1 = First Name 1": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the value of the id =1": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the value of the idBook = 1": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the value of the last name for id1 = last Name 1": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				80
+			],
+			"allTests": [
+				{
+					"Validate the value of the first name for id1 = First Name 1": true,
+					"Validate the value of the id =1": true,
+					"Validate the value of the idBook = 1": true,
+					"Validate the value of the last name for id1 = last Name 1": true
+				}
+			]
+		},
+		{
+			"id": "d2910085-1b03-4587-a073-b5191d7e5b33",
+			"name": "Test case 5",
+			"url": "http://fakerestapi.azurewebsites.net/api/v1/Authors/2",
+			"time": 81,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Validate the value of last name changed to Last Name 12": true,
+				"Validate the value of the firstName = First Name 12": true
+			},
+			"testPassFailCounts": {
+				"Validate the value of last name changed to Last Name 12": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate the value of the firstName = First Name 12": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				81
+			],
+			"allTests": [
+				{
+					"Validate the value of last name changed to Last Name 12": true,
+					"Validate the value of the firstName = First Name 12": true
+				}
+			]
+		},
+		{
+			"id": "2f91625e-3f6a-41a5-a5d6-9e8fe80b05c9",
+			"name": "Test case 6",
+			"url": "http://fakerestapi.azurewebsites.net/api/v1/Authors/1",
+			"time": 80,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Validate that the body of the deleted request is empty.": true,
+				"Status code name has string (OK)": true
+			},
+			"testPassFailCounts": {
+				"Validate that the body of the deleted request is empty.": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code name has string (OK)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				80
+			],
+			"allTests": [
+				{
+					"Validate that the body of the deleted request is empty.": true,
+					"Status code name has string (OK)": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 636,
+	"collection": {
+		"requests": [
+			{
+				"id": "4952d20e-371e-4d7f-bc42-0575984e5ba0",
+				"method": "GET"
+			},
+			{
+				"id": "8e94e5a5-699f-42a4-bbca-e66f8a75f514",
+				"method": "POST"
+			},
+			{
+				"id": "9a1e9635-ad64-4778-99dd-281f6d09227b",
+				"method": "GET"
+			},
+			{
+				"id": "fa872ca6-fc28-47bc-828e-0405345ae1ed",
+				"method": "GET"
+			},
+			{
+				"id": "d2910085-1b03-4587-a073-b5191d7e5b33",
+				"method": "PUT"
+			},
+			{
+				"id": "2f91625e-3f6a-41a5-a5d6-9e8fe80b05c9",
+				"method": "DELETE"
+			}
+		]
+	}
+}

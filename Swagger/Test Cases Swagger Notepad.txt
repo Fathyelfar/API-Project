@@ -1,0 +1,44 @@
+ URL:http://fakerestapi.azurewebsites.net/api/v1/Authors
+ API: GET /api/v1/Authors
+ Test Case 1: Status code is 200
+ Expected Result: 200 OK
+ Actual Result: 200 OK
+ Status: Pass
+
+ 
+ URL:http://fakerestapi.azurewebsites.net/api/v1/Authors
+ API: Post /api/v1/Authors
+ Test Case 2: The status code is 400 because the first name and last name are missing.
+ Expected Result: 400 OK.
+ Actual Result: 200.
+ Status: Fail 
+ 
+ URL:http://fakerestapi.azurewebsites.net/api/v1/Authors/authors/books/1
+ API: GET /api/v1/Authors/authors/books/{idBook}
+ Test Case 3: Response time is less than 200ms
+ Expected Result: Response time is less than 200ms 
+ Actual Result: Response time is 90ms
+ Status: Pass
+
+ URL: http://fakerestapi.azurewebsites.net/api/v1/Authors/1
+ API: GET /api/v1/Authors/{id}
+ Test Case 4:  Validate the value of the first name for id1 = First Name 1.
+ Expected Result: The value of the first name for id1 = "First Name 1" 
+ Actual Result: The value of the first name for id1 is "First Name 1"
+ Status: Pass
+
+ URL: http://fakerestapi.azurewebsites.net/api/v1/Authors/2
+ API: PUT/api/v1/Authors/{id}
+ Test case 5:  Validate the value of the last name changed to Last Name 12
+ Expected Result: the value of the last name changed to Last Name 12
+ Actual Result: the value of the last name changed to Last Name 12  
+ Status: Pass
+
+ URL: http://fakerestapi.azurewebsites.net/api/v1/Authors/1
+ API: DELETE/api/v1/Authors/{id}
+ Test case 6:  Validate that the body of the deleted request is empty.
+ Expected Result: The body of the deleted request is empty. 
+ Actual Result: The body of the deleted request is empty.
+ Status: Pass
+
+ 
